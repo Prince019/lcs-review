@@ -1,16 +1,14 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
-  cacheComponents: true,
-  partialPrefetching: true,
-  turbopack: {
-    rules: {
-      "*.css": {
-        loaders: ["@tailwindcss/turbopack"],
-        as: "*.css",
-      },
-    },
+  cacheComponents: true,   // keep whatever you already have
+  async rewrites() {
+    return {
+      beforeFiles: [
+        { source: "/", destination: "/r/laxmi" },
+        { source: "/lcsreview", destination: "/r/laxmi" },
+      ],
+    };
   },
 };
 
